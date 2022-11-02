@@ -1,0 +1,16 @@
+public int longestConsecutive(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for(int i=0; i<nums.length; i++)
+            set.add(nums[i]);
+        int max = 0;
+        
+        for(int x : set){
+            if(!set.contains(x-1)){ //to start iterate from lowest int in subsequence
+                int count = 1;
+                while(set.contains(++x)) // count till it contains consecutive +1 of x.
+                    count++;
+                max = Math.max(count,max);
+            }
+        }
+        return max;
+    }
